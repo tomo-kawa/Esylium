@@ -1,4 +1,4 @@
-# Esylium
+# Esylium (イジリウム)
 「WebページをSeleniumで簡単(Easy)にイジリたおす」ためのフレームワークです。
 
 # 設計思想
