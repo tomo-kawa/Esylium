@@ -1,0 +1,88 @@
+@startuml ClassesDiagram
+
+package Esylium {
+
+    class Esylium{
+        + start()
+        + stop()
+    }
+
+    class WebDriverHandler {
+        launch()
+        launch_ie()
+        launch_chrome()
+        launch_firefox()
+        launch_egde()
+        launch_phantomjs()
+        makeCapabilities()
+        getElementByXpath()
+        getElementById()
+        getElementByClassName()
+        getElementByName()
+        getElementByLinkText()
+        getElementByCssSelecter()
+    }
+
+    class Operations {
+        - __init__()
+        - __loadJson()
+        + click()
+        + clearTest()
+        + inptText()
+        + getText()
+        + getValue()
+        + selectPulldownByText()
+        + selectPulldownByValue()
+        + getSelectedInPulldown(()
+        + check()
+        + uncheck()
+        + scrollTo()
+        + expectedWait()
+        + isDisplayed()
+        + isEnabled()
+        + isSelected()
+        + searchElement()
+        + createByObject()
+        + getTypeOfItem()
+        + getValueOfItem()
+        + getExpectsItem()
+        + getItemList()
+    }
+
+    Esylium --> WebDriverHandler
+    Operations ..> WebDriverHandler
+}
+
+package YourSystemPackage {
+    class BaseClass
+
+    package Screens {
+        class ScreenXXX
+    }
+}
+note as BaseClassNote
+JP: このクラスはあなたのシステムのセットアップ処理をします。
+EN: This class handles the setup for your system.
+end note
+
+note as ScreensNote
+JP:
+ このクラスはあなたのシステムの画面を定義します。
+ また、このクラスと対になるJSONファイルでシナリオで
+ 使うIDと画面のアイテムとを紐付けします。
+EN:
+ This class defines the screen of your system.
+ In addition, in the JSON file that is paired with this class,
+ the ID used in the scenario is linked to the screen item.
+end note
+
+BaseClassNote .l. BaseClass
+ScreensNote .. ScreenXXX
+
+
+YourTestScenario "*" --> "1" BaseClass
+BaseClass "1" --> "1" Esylium
+BaseClass "1" -l-> "*" ScreenXXX
+ScreenXXX --|>  Operations
+
+@enduml
