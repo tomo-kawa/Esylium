@@ -1,11 +1,13 @@
 from selenium import webdriver
 
 class WebDriverHandler(object):
-
-    def __init__(self):
-        pass
+    """WebDriver handler.
+    This class wrapped the WebDriver.
+    """
 
     def launch_firefox(self):
+        """launch for firefox.
+        """
         options = self.webdriver = webdriver.FirefoxProfile()
         options.accept_untrusted_certs = True
         options.accept_untrusted_cert_issuer = False
